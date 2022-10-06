@@ -1,0 +1,2 @@
+[WEBSERVER]
+10.80.2.123  ansible_user=root ansible_ssh_password=ashok123
