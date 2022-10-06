@@ -1,0 +1,58 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: install ntpdate
+      package:
+        name: ntpdate
+        state: latest
+    - name: install ntpdate
+      package:
+        name: git
+        state: pesent
+    - name: install ntpdate
+      package:
+        name: make
+        state: latest
+    - name: install ntpdate
+      package:
+        name: gcc
+        state: latest
+    - name: install ntpdate
+      package:
+        name: traceroute
+        state: latest
+    - name: Install Httpd
+      yum:
+        name: httpd
+        state: installed
+    - name: enable httpd
+      service:
+        name: httpd
+        enabled: yes
+    - name: start the httpd
+      service:
+        name: httpd
+        state: started
+    - name: COPY STATIC WEBSITE
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0777'
+    - name: check git version
+      shell: git --version
+    - name: check httpd status
+      shell: systemctl httpd status
+    - name: Create a file
+      file:
+        path:  /root/myfile
+        state: touch
+        mode: '0700'
+    - name: Create a file
+      file:
+        path:  /root/mynewdir
+        state: directory
+        mode: '0700'
